@@ -127,4 +127,22 @@ Nothing.prototype.toString = function() {
   return 'Maybe.Nothing()';
 };
 
+Just.prototype.do = function(f) {
+  f(this.value);
+  return this;
+};
+
+Nothing.prototype.do = function() {
+  return this;
+};
+
+Just.prototype.catch = function() {
+  return this;
+};
+
+Nothing.prototype.catch = function(f) {
+  f();
+  return this;
+};
+
 module.exports = Maybe;
